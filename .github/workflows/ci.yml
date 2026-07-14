@@ -49,7 +49,9 @@ jobs:
             echo "::warning::CONFIG_REPO_TOKEN 未設，略過更新 Config Repo（image 已推上 GHCR）"
             exit 0
           fi
-          git clone https://github.com/taiyuhuang591-lang/devops-pipiline.git
+          git clone \
+  "https://x-access-token:${CONFIG_REPO_TOKEN}@github.com/taiyuhuang591-lang/devops-config.git" \
+  devops-config
           cd devops-config
           sed -i "s|image: ghcr.io/taiyuhuang591-lang/devops-pipiline:.*|image: ghcr.io/taiyuhuang591-lang/devops-pipiline:${{ github.sha }}|" k8s/deployment.yaml
           git config user.name "github-actions"
