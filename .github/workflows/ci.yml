@@ -50,7 +50,7 @@ jobs:
             exit 0
           fi
           git clone https://github.com/taiyuhuang591-lang/devops-pipiline.git
-          cd devops-config
+          cd devops-pipiline
           sed -i "s|image: ghcr.io/.*/devops-demo:.*|image: ghcr.io/taiyuhuang591-lang/devops-demo:${{ github.sha }}|" k8s/deployment.yaml
           git config user.name "github-actions"
           git config user.email "actions@github.com"
